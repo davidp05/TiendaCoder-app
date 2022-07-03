@@ -1,0 +1,36 @@
+img{
+    display: flex;
+    max-width: 400px;
+    align-items: center;
+    text-align: center;
+}
+
+h3{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+h4{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.cards{
+    display: grid;
+    align-items: center;
+    text-align: center;
+    width: 400px;
+    height: 500px;
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 2.5px );
+    -webkit-backdrop-filter: blur( 2.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.counter{
+    justify-content: space-around;
+    font-size: xx-large;
+}
