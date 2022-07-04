@@ -1,19 +1,28 @@
 import React from "react";
 import CartWidget from "../CartWidget";
 import "./styles.css";
+import { Link } from "react-router-dom";
 
 const menuItems = [
     {
         id: 1,
-        label: "Categoria 1",
+        label: "Home",
+        path:'/'
     },
     {
         id: 2,
-        label: "Categoria 2"
+        label: "Apple",
+        path:'/category/Apple'
     },
     {
         id: 3,
-        label: "Categoria 3" 
+        label: "Samsung",
+        path:'/category/Samsung'
+    },
+    {
+        id: 4,
+        label: "Xiaomi",
+        path:'/category/Xiaomi' 
     },
 ];
 
@@ -23,9 +32,9 @@ const NavBar = () => {
             <span className="nav-logo">Tienda React</span>
             <div className="nav-items">
                 {menuItems.map((item)=>(
-                    <a href="/" className="nav-item" key={item.id}>
+                    <Link to={item.path} className="nav-item" key={item.id}>
                         {item.label}
-                    </a>
+                    </Link>
                 ))}
             </div>
             <div className="cart">
