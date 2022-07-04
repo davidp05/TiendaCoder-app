@@ -21,29 +21,14 @@ const products = [
     });
 };
 
+export const getProd = (id) => {
+  return new Promise((resolve, reject) => {
+      const productoEncontrado = products.find(
+          (prod) => prod.id === Number(id)
+      );
+      setTimeout(() => {
+          resolve(productoEncontrado);
+      }, 1000);
+  });
+};
 
-
-
-
-
-  // export const getData = new Promise ((resolve, reject) =>{
-  //   //acciones
-  //   let condition = true
-  //   setTimeout(()=>{
-  //     if(condition){
-  //       resolve(products)
-  //     }else{
-  //       reject('salio mal :(')
-  //     }
-  //   },3000)
-  // })
-//   export const getProd = (id) => {
-//     return new Promise((resolve, reject) => {
-//         const productoEncontrado = productos.find(
-//             (prod) => prod.id === Number(id)
-//         );
-//         setTimeout(() => {
-//             resolve(productoEncontrado);
-//         }, 1000);
-//     });
-// };
