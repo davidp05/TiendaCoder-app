@@ -6,7 +6,6 @@ import ItemDetail from '../ItemDetail/ItemDetail';
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(true);
-
     const { id } = useParams();
 
         getProd(id)
@@ -24,14 +23,9 @@ const ItemDetailContainer = () => {
               },[id])
 
     return (
+        
         <div>
-            {loading ? (
-                <h2>Cargando...</h2>
-            ) : (
-                <>
-                    <ItemDetail product={product} />
-                </>
-            )}
+            {loading ? <h2>Cargando...</h2> : <ItemDetail product={product} />}
         </div>
     );
 }
