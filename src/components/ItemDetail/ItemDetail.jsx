@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 
 
 const ItemDetail = ({product}) => {
-    const {addProducts} = useContext(CartContext)
+    const {addProduct} = useContext(CartContext)
     const [buyFinalized, setBuyFinalized] = useState(false);
 
     const onAdd = (count) => {
-        addProducts({...product, qty: count});
+        addProduct({...product, qty: count});
         setBuyFinalized(true);
     };
 
@@ -25,9 +25,7 @@ const ItemDetail = ({product}) => {
                 <h3>$ {product.precio}</h3>
                 <h4>Stock:{product.stock} </h4>
                 <div>
-                    {/* < ItemCount initial={1} stock={product.stock} onAdd={onAdd} /> */}
                     {buyFinalized ? <Link to="/cart"><button>Finalizar compra</button></Link> : < ItemCount initial={1} stock={product.stock} onAdd={onAdd} /> }
-
                 </div>
             </div>
         </div>
