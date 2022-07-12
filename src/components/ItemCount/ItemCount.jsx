@@ -2,12 +2,24 @@ import React, { useState } from 'react';
 
 const ItemCount = ({ initial, stock }) => {
     const [count, setCount] = useState(initial);
+    //Sumar productos
     const add = () => {
-        stock !== count && setCount(count + 1);
+        if (count < stock){
+            setCount(count+1)
+        } else {
+            console.log("No hay mas stock disponible")
+        }
+        //stock !== count && setCount(count + 1);
     };
 
+    //Restar productos
     const substract = () => {
-        initial !== count && setCount(count - 1);
+        if (count > initial){
+            setCount(count-1)
+        } else {
+            console.log("Esta es la unidad minima")
+        }
+        //initial !== count && setCount(count - 1);
     };
     return (
         <div className="count">
