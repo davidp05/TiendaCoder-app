@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import React from 'react'
 
 export const CartContext = createContext();
@@ -8,6 +8,16 @@ const CartCustomProvider = ({ children }) => {
 
     const [products, setProducts] = useState([]);
     const [qtyProducts, setQtyProducts] = useState(0);
+    
+    const getQtyProducts = () => {
+        let qty = 0;
+        products.forEach(product => qty += product.qty);
+        setQtyProducts(qty)
+    };
+    
+    useEffect(() => {
+        getQtyProducts();
+    }, [products])
 
     const addProduct = (product) => {
     if(isInCart(product.id)){
@@ -19,7 +29,7 @@ const CartCustomProvider = ({ children }) => {
     }else{
         setProducts([...products, product]);
     };
-    getQtyProducts();
+    // getQtyProducts();
     };
 
     const deleteProduct = (id) => {
@@ -33,11 +43,6 @@ const CartCustomProvider = ({ children }) => {
         return found ? true : false;
     };
 
-    const getQtyProducts = () => {
-        let qty = 0;
-        products.forEach(product => qty += product.qty);
-        setQtyProducts(qty)
-    };
 
     const clear = () => {
         setProducts([]);
