@@ -1,15 +1,15 @@
 import React from 'react'
-// import { useContext } from 'react'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
-// import { CartContext } from '../../Context/CartContext'
+import { CartContext } from '../../Context/CartContext'
 
 
 //Tarjeta del producto
 
 const Item = ({product}) => {
 
-  // const {products} = useContext(CartContext);
-  // const isInCart = products.some((prod) => prod.id === product.id);
+  const {products} = useContext(CartContext);
+  const isInCart = products.some((prod) => prod.id === product.id);
 
   const {img, name, description, id} = product
 
@@ -23,7 +23,7 @@ const Item = ({product}) => {
         <p className="card-text">{description}</p>
     </div>
     <Link to={`/detail/${id}`} className='btn btn-primary'>Ver más</Link>
-    {/* {isInCart && <h2>Ya se encuentra en el carrito</h2>} */}
+    {isInCart && <h2>Ya se encuentra en el carrito</h2>}
   </div>
   )
 }
