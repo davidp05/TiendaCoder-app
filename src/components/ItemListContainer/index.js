@@ -17,8 +17,7 @@ const ItemListContainer = ({greeting}) => {
   const { categoryId } = useParams()
 
             useEffect(()=>{
-              const productsCollection = collection(db, 'productos');
-              const q = query(productsCollection, where('category', '==', 'Apple'));
+              const q = categoryId ? query(collection(db, 'productos'), where('category', '==', categoryId)) : collection(db, 'productos');
 
               getDocs(q)
               .then(result =>{
