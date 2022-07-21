@@ -10,7 +10,7 @@ import { getDocs, collection, query, where } from 'firebase/firestore'
 const ItemListContainer = ({greeting}) => {
 
   const [productList, setProductList] = useState([])
-  const [loading, setLoading]=useState(false)
+  const [loading, setLoading]=useState(true)
 
   //console.log(db);
 
