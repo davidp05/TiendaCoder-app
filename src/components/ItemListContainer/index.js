@@ -16,22 +16,9 @@ const ItemListContainer = ({greeting}) => {
 
   const { categoryId } = useParams()
 
-  
-
-  // getProds(categoryId)
-  //           .then((res) => {
-  //               setProductList(res);
-  //           })
-  //           .catch((error) => {
-  //               console.log(error);
-  //           })
-  //           .finally(() => {
-  //               setLoading(false);
-  //           });
-            
             useEffect(()=>{
               const productsCollection = collection(db, 'productos');
-              const q = query(productsCollection, where('category' == 'apple'));
+              const q = query(productsCollection, where('category', '==', 'Apple'));
 
               getDocs(q)
               .then(result =>{
@@ -43,12 +30,12 @@ const ItemListContainer = ({greeting}) => {
                 });
                 setProductList(lista);
               
-              });
+              })
               .catch(error => {
-                console.log(error);
-              });
+                console.log(error)
+              })
               .finally(()=>{
-                setLoading(false);
+                setLoading(false)
               })
             },[categoryId]);
             
@@ -58,40 +45,6 @@ const ItemListContainer = ({greeting}) => {
                   {loading ? <p>Cargando...</p> : <ItemList productList={productList}/>}
               </div>
 )}
-//tratar la promesa con try cathc finally 
-// const getDocs(q) = async () => {
-//   try{
-//     const lista = await result.docs.map(product => {
-//     return {
-//     id: product.id,
-//      ...product.data(),
-//      }
-//      });
-//     setProductList(lista)
-//   }catch(error){
-//     console.log(error)
-//   }finally{
-//     setLoading(false)
-//   }
-// }, [categoryId]
-
-// const getProducts = async () => {
-  //   try{
-  //     const respuesta = await getProds
-  //     setProductList(respuesta)
-  //   }catch(error){
-  //     console.log(error)
-  //   }finally{
-  //     setLoading(false)
-  //   }
-  // }
-
-// return (
-  //   <div className='landing'>
-  //       <span>{greeting}</span>
-  //       <ItemList productList={productList}/>
-  //       </div>
-  // )
 
 
 export default ItemListContainer
