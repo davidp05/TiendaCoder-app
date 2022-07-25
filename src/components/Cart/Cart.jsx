@@ -2,9 +2,29 @@ import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext'
+import { db } from '../../firebase/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 const Cart = () => {
     const { products, deleteProduct, calcularTotal } = useContext(CartContext);
+
+        const datosComprador = {
+            nombre: 'David',
+            apellido: 'Perren',
+            email: 'Dperren@gmail.com',
+        };
+
+        const finalizaCompra = () => {
+            const ventasCollection = collection(db, 'ventas');
+            addDoc(ventasCollection, {
+                datosComprador,
+                items: [{products}],
+                date: serverTimestamp(),
+                total: calcularTotal(),
+            });
+            console.log(finalizaCompra);
+        };
+
 
     if (products.length === 0) {
         return (
@@ -42,6 +62,7 @@ const Cart = () => {
                     </div>
                 ))}
                 <h3>Total: $ {calcularTotal()} </h3>
+                <button onClick={finalizaCompra}>Finalizar compra</button>
             </div>
         </div>
     );
