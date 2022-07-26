@@ -4,20 +4,15 @@ import { Link } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext'
 import { db } from '../../firebase/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import CartForm from '../CartForm/CartForm';
 
 const Cart = () => {
-    const { products, deleteProduct, calcularTotal } = useContext(CartContext);
-
-        const datosComprador = {
-            nombre: 'David',
-            apellido: 'Perren',
-            email: 'Dperren@gmail.com',
-        };
+    const { products, deleteProduct, calcularTotal, comprador } = useContext(CartContext);
 
         const finalizaCompra = () => {
             const ventasCollection = collection(db, 'ventas');
             addDoc(ventasCollection, {
-                datosComprador,
+                datosComprador: [{comprador}],
                 items: [{products}],
                 date: serverTimestamp(),
                 total: calcularTotal(),
@@ -62,6 +57,7 @@ const Cart = () => {
                     </div>
                 ))}
                 <h3>Total: $ {calcularTotal()} </h3>
+                <CartForm/>
                 <button onClick={finalizaCompra}>Finalizar compra</button>
             </div>
         </div>
