@@ -9,7 +9,7 @@ import { useState } from 'react';
 const Cart = () => {
     const { products, deleteProduct, calcularTotal } = useContext(CartContext);
     const [idVenta, setIdVenta] = useState("")
-
+    const [compraFinalizada, setCompraFinalizada] = useState(false)
     const [comprador, setComprador] = useState ({
         nombre: '',
         apellido: '',
@@ -22,6 +22,11 @@ const Cart = () => {
         });
       };
 
+      const enviarDatos = (event) => {
+        event.preventDefault()
+        console.log('enviando datos...')
+    }
+
         const finalizaCompra = () => {
             const ventasCollection = collection(db, 'ventas');
             addDoc(ventasCollection, {
@@ -32,9 +37,11 @@ const Cart = () => {
             })
             .then((result) => {
                 setIdVenta(result.id)
+                setCompraFinalizada(true)
             })
-            console.log(finalizaCompra)
+            // console.log(finalizaCompra)
         }
+
 
 
     if (products.length === 0) {
@@ -74,12 +81,14 @@ const Cart = () => {
                 ))}
                 <h3>Total: $ {calcularTotal()} </h3>
                 <div>
-                <form>
+                <form onSubmit={enviarDatos}>
                     <input type='text' placeholder='Coloque su nombre' name='nombre' onChange={cambiarDatos}></input>
                     <input type='text' placeholder='Coloque su apellido' name='apellido' onChange={cambiarDatos}></input>
                 </form>
                 </div>
-                <button onClick={finalizaCompra}>Finalizar compra</button>
+                <div>
+                        {compraFinalizada ? <h3>Gracias por si compra, su ID de venta es: {idVenta}</h3> :  <button onClick={finalizaCompra}>Finalizar compra</button> }
+                </div>
             </div>
         </div>
     );
