@@ -4,21 +4,37 @@ import { Link } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext'
 import { db } from '../../firebase/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import CartForm from '../CartForm/CartForm';
+import { useState } from 'react';
 
 const Cart = () => {
-    const { products, deleteProduct, calcularTotal, comprador } = useContext(CartContext);
+    const { products, deleteProduct, calcularTotal } = useContext(CartContext);
+    const [idVenta, setIdVenta] = useState("")
+
+    const [comprador, setComprador] = useState ({
+        nombre: '',
+        apellido: '',
+      });
+    
+      const cambiarDatos = (event) => {
+        setComprador({
+          ...comprador,
+          [event.target.name] : event.target.value
+        });
+      };
 
         const finalizaCompra = () => {
             const ventasCollection = collection(db, 'ventas');
             addDoc(ventasCollection, {
-                datosComprador: [{comprador}],
-                items: [{products}],
+                usuario: comprador,
+                items: products,
                 date: serverTimestamp(),
                 total: calcularTotal(),
-            });
-            console.log(finalizaCompra);
-        };
+            })
+            .then((result) => {
+                setIdVenta(result.id)
+            })
+            console.log(finalizaCompra)
+        }
 
 
     if (products.length === 0) {
@@ -57,7 +73,12 @@ const Cart = () => {
                     </div>
                 ))}
                 <h3>Total: $ {calcularTotal()} </h3>
-                <CartForm/>
+                <div>
+                <form>
+                    <input type='text' placeholder='Coloque su nombre' name='nombre' onChange={cambiarDatos}></input>
+                    <input type='text' placeholder='Coloque su apellido' name='apellido' onChange={cambiarDatos}></input>
+                </form>
+                </div>
                 <button onClick={finalizaCompra}>Finalizar compra</button>
             </div>
         </div>
