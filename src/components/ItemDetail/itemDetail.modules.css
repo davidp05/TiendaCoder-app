@@ -1,19 +1,5 @@
-.box {
-  max-width: 150px;
-  display: grid;
-  grid-template-columns: 1;
-  align-items: center;
-  text-align: center;
-  box-sizing: border-box;
-  width: 100%;
-  border: solid black 5px;
-  padding: 5px;
-}
-
-p {
-  display: inline-block;
-  text-align: center;
-  size: 1rem;
+.parent {
+  display: flex;
 }
 
 .buttons {
@@ -36,4 +22,9 @@ p {
 .buttons:hover {
   background: #fff;
   color: #4433ff
+}
+
+img{
+  max-width: 400px;
+  max-height: 400px;
 }

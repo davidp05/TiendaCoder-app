@@ -3,7 +3,7 @@ import { useState, useContext } from 'react';
 import ItemCount from '../ItemCount/ItemCount';
 import { CartContext } from '../../Context/CartContext';
 import { Link } from 'react-router-dom';
-import './itemDetail.css'
+import styles from './itemDetail.modules.css'
 
 
 const ItemDetail = ({product}) => {
@@ -18,18 +18,24 @@ const ItemDetail = ({product}) => {
 
 
     return (
-        <div className="wrapper">
-            <div className='item1'>
-                <img  src={product.img} alt={product.name} />
+        <div className={styles.parent}>
+            <div className={styles.parent}>
+                <img  src={product.img} className={styles.imagen} alt={product.name} />
             </div>
-            <div className='item1'> 
+            <div className={styles.box}> 
                 <h1>{product.name}</h1>
                 <h2>{product.description}</h2>
                 <h3>$ {product.precio}</h3>
                 <h4>Stock:{product.stock}</h4>
             </div>
                 <div>
-                    {buyFinalized ? <Link to="/cart"><button>Finalizar compra</button></Link> : < ItemCount initial={1} stock={product.stock} onAdd={onAdd} /> }
+                    {buyFinalized 
+                    ? 
+                    <Link to="/cart">
+                        <button className={styles.buttons}>Finalizar compra</button>
+                    </Link> 
+                    : 
+                    < ItemCount initial={1} stock={product.stock} onAdd={onAdd} /> }
                 </div>
             </div>
     );
