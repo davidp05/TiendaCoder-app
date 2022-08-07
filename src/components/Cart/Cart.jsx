@@ -5,6 +5,8 @@ import { CartContext } from '../../Context/CartContext'
 import { db } from '../../firebase/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { useState } from 'react';
+import styles from './Cart.module.css'
+
 
 const Cart = () => {
     const { products, deleteProduct, calcularTotal } = useContext(CartContext);
@@ -56,38 +58,34 @@ const Cart = () => {
         <div>
             <div>
                 {products.map((product) => (
-                    <div
+                    <div className={styles.wrapper}>
+                    <div className={styles.vistaProducto}
                         key={product.id}
-                        style={{
-                            display: 'flex',
-                            border: '2px solid black',
-                            margin: '10px',
-                            padding: '10px',
-                        }}
                     >
                         <div>
                             <img src={product.img} width="70px" alt="product" />
                         </div>
-                        <h2>Producto:{product.name}</h2>
+                        <h2>Producto: {product.name} </h2>
                         <br/>
-                        <h2> ${product.precio}</h2>
+                        <h2> $ {product.precio}</h2>
                         <br/>
                         <h2>Cantidad: {product.qty}</h2>
                         <br/>
-                        <button onClick={() => deleteProduct(product.id)}>
+                        <button className={styles.buttons} onClick={() => deleteProduct(product.id)}>
                             Delete
                         </button>
+                    </div>
                     </div>
                 ))}
                 <h3>Total: $ {calcularTotal()} </h3>
                 <div>
-                <form onSubmit={enviarDatos}>
+                <form className={styles.form} onSubmit={enviarDatos}>
                     <input type='text' placeholder='Coloque su nombre' name='nombre' onChange={cambiarDatos}></input>
                     <input type='text' placeholder='Coloque su apellido' name='apellido' onChange={cambiarDatos}></input>
                 </form>
                 </div>
                 <div>
-                        {compraFinalizada ? <h3>Gracias por si compra, su ID de venta es: {idVenta}</h3> :  <button onClick={finalizaCompra}>Finalizar compra</button> }
+                        {compraFinalizada ? <h3>Gracias por si compra, su ID de venta es: {idVenta}</h3> :  <button className={styles.buttons} onClick={finalizaCompra}>Finalizar compra</button> }
                 </div>
             </div>
         </div>
