@@ -1,45 +1,39 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-.wrapper{
-  display: grid;
-  grid-template-columns: auto;
+
+.vistaProducto {
+  border: 2px solid black;
+  margin: 10px;
+  padding: 10px;
+  height: 350px;
+  width: 200px;
   text-align: center;
 }
 
-.vistaProducto {
-    display: inline-block;
-    border: 2px solid black;
-    margin: 10px;
-    padding: 10px;
-    height: 350px;
-    width: 200px;
-    text-align: center;
+.buttons {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  padding: 5px;
+  margin: 2px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 20px;
+  border: 2px solid black;
+  background: #4433ff;
 }
 
-.buttons {
-    width: 130px;
-    height: 40px;
-    color: #fff;
-    padding: 5px;
-    margin: 2px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-    outline: none;
-    border-radius: 20px;
-    border: 2px solid black;
-    background: #4433ff;
-  }
-  
-  .buttons:hover {
-    background: #fff;
-    color: #4433ff
-  }
+.buttons:hover {
+  background: #fff;
+  color: #4433ff
+}
 
 /* FORMULARIO */
 
@@ -48,6 +42,7 @@ form {
   margin: 2px;
   padding: 10px;
 }
+
 form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
@@ -59,4 +54,3 @@ form input {
   box-sizing: border-box;
   font-size: 14px;
 }
-
