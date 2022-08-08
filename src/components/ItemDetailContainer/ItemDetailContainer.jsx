@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-// import { getProd } from '../../mooks/fakeApi';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import { db } from '../../firebase/firebase'
 import { getDoc, collection, doc } from 'firebase/firestore'

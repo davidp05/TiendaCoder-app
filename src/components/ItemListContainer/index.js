@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./styles.css"
 import ItemList from '../../components/ItemList/ItemList'
-// import { getProds } from '../../mooks/fakeApi'
 import { useParams } from 'react-router-dom'
 import { db } from '../../firebase/firebase'
 import { getDocs, collection, query, where } from 'firebase/firestore'
@@ -11,8 +10,6 @@ const ItemListContainer = ({greeting}) => {
 
   const [productList, setProductList] = useState([])
   const [loading, setLoading]=useState(true)
-
-  //console.log(db);
 
   const { categoryId } = useParams()
 

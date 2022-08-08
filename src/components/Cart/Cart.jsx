@@ -41,7 +41,6 @@ const Cart = () => {
                 setIdVenta(result.id)
                 setCompraFinalizada(true)
             })
-            // console.log(finalizaCompra)
         }
 
 

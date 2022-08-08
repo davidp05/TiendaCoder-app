@@ -10,7 +10,6 @@ const ItemCount = ({ initial, stock, onAdd }) => {
         } else {
             console.log("No hay mas stock disponible")
         }
-        //stock !== count && setCount(count + 1);
     };
 
     //Restar productos
@@ -20,7 +19,6 @@ const ItemCount = ({ initial, stock, onAdd }) => {
         } else {
             console.log("Esta es la unidad minima")
         }
-        //initial !== count && setCount(count - 1);
     };
     return (
         <div>

@@ -29,7 +29,6 @@ export const getProd = (id) => {
       setTimeout(() => {
           resolve(productoEncontrado);
       }, 1000);
-      //console.log(productoEncontrado)
   });
 };
 

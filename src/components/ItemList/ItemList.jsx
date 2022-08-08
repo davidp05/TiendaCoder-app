@@ -2,7 +2,6 @@ import React from 'react'
 import Item from '../Item/Item'
 
 const ItemList = ({productList}) => {
-    // const {productList}=props
   return (
     <div>
         <h3>Lista de productos</h3>
