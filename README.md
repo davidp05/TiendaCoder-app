@@ -15,7 +15,7 @@ _En este proyecto se podrá encontrar la funcionalidad de un E-Commerce, simulan
 
 ## Autor ✒️
 
-* **David Perren**
+**David Perren**
 * [GitHub](https://github.com/davidp05)
 * [LinkedIn](https://www.linkedin.com/in/david-perren/)
 

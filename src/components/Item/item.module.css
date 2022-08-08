@@ -2,6 +2,7 @@
     margin: .3rem;
     padding: .5rem;
     width: 32%;
+    height: 370px;
     background: rgba(255, 255, 255, 0.4);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(6.5px);
@@ -10,23 +11,35 @@
     border: 1px solid rgba(255, 255, 255, 0.18);
     text-align: center;
     display: block;
+    align-items: center;
 }
 
-.card-img-top {
-    height: 200px;
-    width: 200px;
+.cardImgTop {
+    max-height: 120px;
+    max-width: 120px;
 }
 
 .btn {
-    width: .3rem;
-    height: .3rem;
-    background: dodgerblue;
-    border-radius: 6px;
-    text-decoration: none;
-    padding: 3px;
-    margin: 5px;
-    color: aliceblue;
-}
+    width: 100px;
+    height: 40px;
+    color: #fff;
+    padding: 5px;
+    margin: 2px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 20px;
+    border: 2px solid black;
+    background: #4433ff;
+  }
+  
+  .btn:hover {
+    background: #fff;
+    color: #4433ff
+  }
 
 h1 {
     padding: .2rem;
